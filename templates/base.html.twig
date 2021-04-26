@@ -9,41 +9,6 @@
             {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
 
-        {% block content %}
-            <p>LOGIN</p>
-
-
-<form action="{{ path('register2') }}" method="POST">
-            <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        <i class="fa fa-user fa" aria-hidden="true"></i>
-                    </span>
-                    <input class="form-control" type="text" id="_username" name="_username" required="required" placeholder="Username" />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        <i class="fa fa-user fa" aria-hidden="true"></i>
-                    </span>
-                    <input class="form-control" type="text" id="_password" name="_password" required="required" placeholder="Password" />
-                </div>
-            </div>
-
-
-            <input class="btn btn-primary btn-block" type="submit" id="_submit" name="_submit" />
-        </form>
-
-
-
-
-
-
-        {% endblock %}
-
-
         {% block javascripts %}
             {#{{ encore_entry_script_tags('app') }}#}
         {% endblock %}

@@ -1,6 +1,10 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
 register:
     path: /register
-    controller: App\Controller\LoginController::register
+    controller: App\Controller\DefaultController::register
     methods: POST
 
 api:
@@ -10,18 +14,3 @@ api:
 login_check:
     path:     /login_check
     methods:  [POST]
-
-
-log:
-    path: /log
-    controller: App\Controller\LoginController::log
-
-register2:
-    path: /register2
-    controller: App\Controller\DefaultController::register2
-    methods: POST
-
-
-testGetPages:
-    path: /testGetPages
-    controller: App\Controller\DefaultController::testGetPages
