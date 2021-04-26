@@ -18,6 +18,7 @@ use Lexik\Bundle\JWTAuthenticationBundle\Events;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 use Symfony\Component\EventDispatcher\Event;
+use Lexik\Bundle\JWTAuthenticationBundle\Event\AuthenticationSuccessEvent;
 
 
 class LoginController extends WebTestCase
@@ -50,10 +51,12 @@ class LoginController extends WebTestCase
                 'password' => $request->request->get('_password'),
             ))
         );
-
+        
         $data = json_decode($user->getResponse()->getContent(), true);
-        // dump($data);
+        dump($data);
         $user->setServerParameter('HTTP_Authorization', sprintf('Bearer %s', $data['token']));
+
+
 
         /*  $response = $user->getResponse();
             $jwt = $data['token'];
@@ -91,6 +94,8 @@ class LoginController extends WebTestCase
 
 
         dump($response->headers);
+
+
 
         return new Response(sprintf('User %s successfully created', $request->request->get('_username')));
     }
