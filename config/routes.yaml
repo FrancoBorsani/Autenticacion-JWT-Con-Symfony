@@ -7,6 +7,7 @@ register:
     controller: App\Controller\DefaultController::register
     methods: POST
 
+
 api:
     path: /api
     controller: App\Controller\DefaultController::api
@@ -14,3 +15,13 @@ api:
 login_check:
     path:     /login_check
     methods:  [POST]
+
+a:
+    path: /a
+    controller: App\Controller\DefaultController::a
+
+
+register2:
+    path: /register2
+    controller: App\Controller\LoginController::register2
+    methods: POST
