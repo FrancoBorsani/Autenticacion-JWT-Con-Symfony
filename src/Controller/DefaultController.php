@@ -13,6 +13,11 @@ use PHPUnit\Framework\TestCase;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use FOS\RestBundle\Context\Context;
+use FOS\RestBundle\Controller\AbstractFOSRestController;
+
 
 class DefaultController extends AbstractController
 {
@@ -34,7 +39,7 @@ class DefaultController extends AbstractController
 
         $em->persist($user);
         $em->flush();
-
+  //      return $this->view($user, Response::HTTP_CREATED)->setContext((new Context())->setGroups(['public']));
         return new Response(sprintf('User %s successfully created', $user->getUsername()));
     }
 
