@@ -1,14 +1,15 @@
 <?php
 
-
 namespace App\Listeners;
+
 use Lexik\Bundle\JWTAuthenticationBundle\Event\AuthenticationSuccessEvent;
 use Lexik\Bundle\JWTAuthenticationBundle\Response\JWTAuthenticationSuccessResponse;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
-class AuthenticationSuccessListener{
+class AuthenticationSuccessListener
+{
     private $jwtTokenTTL;
 
     private $cookieSecure = false;
@@ -18,6 +19,12 @@ class AuthenticationSuccessListener{
         $this->jwtTokenTTL = $ttl;
     }
 
+    /**
+     * This function is responsible for the authentication part
+     *
+     * @param AuthenticationSuccessEvent $event
+     * @return JWTAuthenticationSuccessResponse
+     */
     public function onAuthenticationSuccess(AuthenticationSuccessEvent $event)
     {
         /** @var JWTAuthenticationSuccessResponse $response */

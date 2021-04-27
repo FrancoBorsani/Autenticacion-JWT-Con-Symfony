@@ -57,7 +57,6 @@ class LoginController extends WebTestCase
         $user->setServerParameter('HTTP_Authorization', sprintf('Bearer %s', $data['token']));
 
 
-
         /*  $response = $user->getResponse();
             $jwt = $data['token'];
          //   dump($jwt);
@@ -76,24 +75,11 @@ class LoginController extends WebTestCase
                 )
             );*/
 
-      
-        $response = new Response();
-        $response->headers->setCookie(
-            new Cookie(
-                'BEARER', // cookie name, should be the same as in JWT settings
-                $data['token'], // the cookie value, e.g. the generated JWT token
-                new \DateTime('+1 day'), // the expiration
-                '/', // the path
-                null, // the domain, null means that Symfony will generate it on its own
-                true, // secure, e.g. only via https
-                true, // http only cookie, which is the default so no need to specify
-                false, // raw
-                'strict' // the same-site parameter, can be 'lax' or 'strict'
-            )
-        );
 
 
-        dump($response->headers);
+       // setcookie("galleta", $data['token'], time()+3000, "/", "localhost:8000", true, true);
+
+     //   dump($response->headers);
 
 
 
