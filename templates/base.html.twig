@@ -1,54 +1,44 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
 
-        {% block content %}
-            <p>LOGIN</p>
+		{% block content %}
+			<p>LOGIN</p>
 
 
-<form action="{{ path('register2') }}" method="POST">
-            <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        <i class="fa fa-user fa" aria-hidden="true"></i>
-                    </span>
-                    <input class="form-control" type="text" id="_username" name="_username" required="required" placeholder="Username" />
-                </div>
-            </div>
+			<form action="{{ path('login') }}" method="POST">
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<i class="fa fa-user fa" aria-hidden="true"></i>
+						</span>
+						<input class="form-control" type="text" id="_username" name="_username" required="required" placeholder="Username"/>
+					</div>
+				</div>
 
-            <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        <i class="fa fa-user fa" aria-hidden="true"></i>
-                    </span>
-                    <input class="form-control" type="text" id="_password" name="_password" required="required" placeholder="Password" />
-                </div>
-            </div>
-
-
-            <input class="btn btn-primary btn-block" type="submit" id="_submit" name="_submit" />
-        </form>
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<i class="fa fa-user fa" aria-hidden="true"></i>
+						</span>
+						<input class="form-control" type="text" id="_password" name="_password" required="required" placeholder="Password"/>
+					</div>
+				</div>
 
 
+				<input class="btn btn-primary btn-block" type="submit" id="_submit" name="_submit"/>
+			</form>
 
 
+		{% endblock %}
 
-
-        {% endblock %}
-
-
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+	</head>
+	<body>
+		{% block body %}{% endblock %}
+	</body>
 </html>

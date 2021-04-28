@@ -8,20 +8,27 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
+
+
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use PHPUnit\Framework\TestCase;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use DateTime;
+use Lexik\Bundle\JWTAuthenticationBundle\Response\JWTAuthenticationSuccessResponse;
+use Symfony\Component\HttpFoundation\Cookie;
 
-use App\Repository\UserRepository;
-use Doctrine\ORM\EntityManagerInterface;
-use FOS\RestBundle\Context\Context;
-use FOS\RestBundle\Controller\AbstractFOSRestController;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Lexik\Bundle\JWTAuthenticationBundle\Events;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+
+use Symfony\Component\EventDispatcher\Event;
+use Lexik\Bundle\JWTAuthenticationBundle\Event\AuthenticationSuccessEvent;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 
 class DefaultController extends AbstractController
 {
-    public function a()
+
+    public function loginView()
     {
         return $this->render('base.html.twig');
     }
@@ -39,7 +46,7 @@ class DefaultController extends AbstractController
 
         $em->persist($user);
         $em->flush();
-  //      return $this->view($user, Response::HTTP_CREATED)->setContext((new Context())->setGroups(['public']));
+
         return new Response(sprintf('User %s successfully created', $user->getUsername()));
     }
 
@@ -47,4 +54,8 @@ class DefaultController extends AbstractController
     {
         return new Response(sprintf('Logged in as %s', $this->getUser()->getUsername()));
     }
+
+
+
+
 }

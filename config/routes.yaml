@@ -1,10 +1,20 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+api_login_check:
+    path: /api/login_check
+
 
 register:
     path: /register
     controller: App\Controller\DefaultController::register
+    methods: POST
+
+loginView:
+    path: /loginView
+    controller: App\Controller\DefaultController::loginView
+
+
+createAuthenticatedClient:
+    path: /createAuthenticatedClient
+    controller: App\Controller\LoginController::createAuthenticatedClient
     methods: POST
 
 
@@ -12,16 +22,7 @@ api:
     path: /api
     controller: App\Controller\DefaultController::api
 
-login_check:
-    path:     /login_check
-    methods:  [POST]
-
-a:
-    path: /a
-    controller: App\Controller\DefaultController::a
-
-
-register2:
-    path: /register2
-    controller: App\Controller\LoginController::register2
+login:
+    path: /login
+    controller: App\Controller\LoginController::login
     methods: POST
