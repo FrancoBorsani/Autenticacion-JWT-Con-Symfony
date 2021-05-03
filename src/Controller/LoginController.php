@@ -25,6 +25,7 @@ class LoginController extends WebTestCase
 {
     public function createAuthenticatedClient($username, $password)
     {
+        
         $user = static::createClient();
         $user->request(
             'POST',
@@ -37,14 +38,8 @@ class LoginController extends WebTestCase
                  'password' => $password,
             ))
         );
-        
-
+       
         $data = json_decode($user->getResponse()->getContent(), true);
-
-        //SI NO EXISTE LA COLUMNA "CODE" -> LA CUAL MUESTRA EL STATUS 401 (CREDENCIALES INVÁLIDAS) EN CASO DE FALLAR
-        if(!array_key_exists('code', $data)){
-            $user->setServerParameter('HTTP_Authorization', sprintf('Bearer %s', $data['token']));
-        }
 
         return $user;
    }
@@ -55,7 +50,6 @@ class LoginController extends WebTestCase
 
         $client = $this->createAuthenticatedClient($request->request->get('_username'), $request->request->get('_password'));
         $response = $client->request('GET', '/api');    //Si el usuario es válido.
-
         return new Response(sprintf('Completado'));
     }
 

@@ -29,6 +29,5 @@ services:
 
     # Se dispara cuando un usuario se autentica -> login_check
     App\Listeners\AuthenticationSuccessListener:
-        arguments: ['%lexik_jwt_authentication.token_ttl%']
         tags:
-            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_success, method: onAuthenticationSuccess, priority: -2 }
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_success, method: onAuthenticationSuccess}
